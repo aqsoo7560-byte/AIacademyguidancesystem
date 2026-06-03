@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assessment - AI Guidance</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <section class="form-section" style="padding-top: 100px; display: flex; justify-content: center;">
+        <div class="form-container" style="background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 450px; text-align: center;">
+            <h2 style="color: #333;">Student Assessment</h2>
+            <p style="color: #666; margin-bottom: 20px;">Enter your details for career guidance.</p>
+            
+            <form action="/assessment" method="POST">
+                <div class="input-group" style="text-align: left; margin-bottom: 15px;">
+                    <label style="display: block; font-weight: bold; margin-bottom: 5px;">Current Grade/GPA</label>
+                    <input type="number" name="gpa" step="0.1" placeholder="e.g. 3.5" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                </div>
+                
+                <div class="input-group" style="text-align: left; margin-bottom: 15px;">
+                    <label style="display: block; font-weight: bold; margin-bottom: 5px;">Interest Area</label>
+                    <select name="interest" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                        <option value="">Select Interest</option>
+                        <option value="coding">Coding/Software</option>
+                        <option value="design">Graphic Design</option>
+                        <option value="business">Business/Finance</option>
+                        <option value="science">Medical/Science</option>
+                    </select>
+                </div>
+
+                <button type="submit" style="width: 100%; padding: 12px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">Analyze My Profile</button>
+            </form>
+
+            {% if prediction %}
+            <div style="margin-top: 25px; padding: 15px; background: #d4edda; border: 1px solid #c3e6cb; border-radius: 8px; color: #155724;">
+                <h4 style="margin: 0;">Recommended Path:</h4>
+                <p style="font-size: 18px; font-weight: bold; margin: 10px 0 0 0;">{{ prediction }}</p>
+            </div>
+
+            <div style="margin-top: 20px; padding: 20px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 10px; text-align: left;">
+                <h5 style="margin: 0 0 12px 0; color: #495057; font-size: 16px; font-weight: bold; border-bottom: 2px solid #dee2e6; padding-bottom: 5px;">🛠️ Strategic Action Roadmap:</h5>
+                <ul style="padding-left: 20px; margin: 0; color: #495057; font-size: 14px; line-height: 1.6;">
+                    
+                    {% if "Artificial Intelligence" in prediction %}
+                        <li><strong>Step 1:</strong> Learn Python programming basics and Advanced Mathematics (Linear Algebra & Calculus).</li>
+                        <li><strong>Step 2:</strong> Master Data Science libraries like NumPy, Pandas, and Scikit-Learn.</li>
+                        <li><strong>Step 3:</strong> Build Deep Learning projects and deploy models using APIs.</li>
+                    
+                    {% elif "Full-Stack" in prediction %}
+                        <li><strong>Step 1:</strong> Master Frontend fundamentals (HTML5, CSS3, JavaScript ES6).</li>
+                        <li><strong>Step 2:</strong> Learn Backend engineering (Node.js, Python Flask/Django, or PHP) along with SQL/NoSQL Databases.</li>
+                        <li><strong>Step 3:</strong> Build full MERN or Flask stack web portals and deploy them on Cloud platforms.</li>
+                    
+                    {% elif "Tech Support" in prediction %}
+                        <li><strong>Step 1:</strong> Understand Computer Networking (TCP/IP), Operating Systems basics, and Hardware troubleshooting.</li>
+                        <li><strong>Step 2:</strong> Learn basic HTML/CSS and Frontend scripting for layout modifications.</li>
+                        <li><strong>Step 3:</strong> Clear standard certifications like CompTIA A+ or Google IT Support.</li>
+                    
+                    {% elif "UI/UX Product Designer" in prediction %}
+                        <li><strong>Step 1:</strong> Understand User Psychology, Design Principles, and Information Architecture.</li>
+                        <li><strong>Step 2:</strong> Practice High-Fidelity Wireframing and Prototyping on Figma and Adobe XD.</li>
+                        <li><strong>Step 3:</strong> Conduct UX Research and compile a professional case study portfolio on Behance.</li>
+                    
+                    {% elif "Creative Graphic Designer" in prediction %}
+                        <li><strong>Step 1:</strong> Learn Layout Theories, Color Harmonies, and Typography rules.</li>
+                        <li><strong>Step 2:</strong> Master Industry tools: Adobe Photoshop (Raster) and Adobe Illustrator (Vector).</li>
+                        <li><strong>Step 3:</strong> Design professional brand identities, logos, and social media marketing assets.</li>
+                    
+                    {% elif "Fintech Analyst" in prediction %}
+                        <li><strong>Step 1:</strong> Study Core Corporate Finance, Data Analysis methods, and Blockchain fundamentals.</li>
+                        <li><strong>Step 2:</strong> Learn Predictive Data Modeling using Python and Financial Planning Software.</li>
+                        <li><strong>Step 3:</strong> Work on automated algorithmic trading workflows or risk assessment strategies.</li>
+                    
+                    {% elif "E-Commerce Specialist" in prediction %}
+                        <li><strong>Step 1:</strong> Learn Digital Store setups (Shopify, WooCommerce) and Supply Chain basics.</li>
+                        <li><strong>Step 2:</strong> Master SEO (Search Engine Optimization), running Meta Ads, and Data-driven Analytics.</li>
+                        <li><strong>Step 3:</strong> Execute operational scale strategies for product hunting and customer management.</li>
+                    
+                    {% elif "Bio-Informatics" in prediction %}
+                        <li><strong>Step 1:</strong> Learn Biology structures alongside Python programming foundations.</li>
+                        <li><strong>Step 2:</strong> Master Genomic Data processing packages (Biopython) and biological relational databases.</li>
+                        <li><strong>Step 3:</strong> Work on simulated DNA sequence analyses and computational structure predictions.</li>
+                    
+                    {% elif "Health Informatics" in prediction %}
+                        <li><strong>Step 1:</strong> Study Electronic Health Record (EHR) frameworks and hospital administration basics.</li>
+                        <li><strong>Step 2:</strong> Learn clinical data extraction methods and healthcare privacy standards.</li>
+                        <li><strong>Step 3:</strong> Implement administrative tech tools for optimizing operations in active healthcare setups.</li>
+                    
+                    {% else %}
+                        <li><strong>Step 1:</strong> Explore Prompt Engineering, ChatGPT workflows, and basic Tech Automation tools.</li>
+                        <li><strong>Step 2:</strong> Build modern digital literacy skills and learn how AI shapes current industries.</li>
+                        <li><strong>Step 3:</strong> Enroll in foundational courses like Google or IBM AI Fundamentals.</li>
+                    {% endif %}
+                    
+                </ul>
+            </div>
+            {% endif %}
+
+            <div style="margin-top: 20px;">
+                <a href="{{ url_for('home') }}" style="text-decoration: none; color: #007bff; font-weight: bold;">← Back to Home</a>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

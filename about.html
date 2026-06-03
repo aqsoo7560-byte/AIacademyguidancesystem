@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - AI Guidance System</title>
+    <style>
+        /* CSS Styling */
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #e0f2f1 0%, #ffffff 100%);
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .about-card {
+            background: white;
+            max-width: 800px;
+            width: 90%;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #0077b6;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .intro-text {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .mission-box {
+            background: #f0f9ff;
+            padding: 25px;
+            border-left: 6px solid #0077b6;
+            text-align: left;
+            margin-bottom: 30px;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .mission-box h3 {
+            margin-top: 0;
+            color: #0077b6;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .service-item {
+            padding: 15px;
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 10px;
+        }
+
+        .service-item strong {
+            display: block;
+            color: #0077b6;
+            margin-bottom: 5px;
+        }
+
+        .btn-home {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 12px 30px;
+            background-color: #0077b6;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: transform 0.2s, background 0.3s;
+        }
+
+        .btn-home:hover {
+            background-color: #005f8d;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="about-card">
+        <h1>About AI Guidance</h1>
+        <p class="intro-text">Empowering the next generation with intelligent career solutions.</p>
+
+        <div class="mission-box">
+            <h3>Our Purpose</h3>
+            <p>Our goal is to help students navigate the complex world of education and career choices. By using Artificial Intelligence, we analyze academic performance and personal interests to provide a clear roadmap for your success.</p>
+        </div>
+
+        <h3>How We Assist You:</h3>
+        <div class="services-grid">
+            <div class="service-item">
+                <strong>Career Matching</strong>
+                Finding the best professional fields based on your unique personality.
+            </div>
+            <div class="service-item">
+                <strong>Academic Support</strong>
+                Suggesting learning paths and courses that fit your current GPA.
+            </div>
+            <div class="service-item">
+                <strong>Future Insights</strong>
+                Predicting market trends to ensure you choose a high-demand career.
+            </div>
+            <div class="service-item">
+                <strong>Skill Tracking</strong>
+                Identifying the specific skills you need to achieve your dream job.
+            </div>
+        </div>
+
+        <a href="{{ url_for('home') }}" class="home-btn">← Back to Home</a>
+    </div>
+
+</body>
+</html>

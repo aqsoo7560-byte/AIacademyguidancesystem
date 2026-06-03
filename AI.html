@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Academy Guidance System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">AI Guidance</div>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('home') }}">Dashboard</a></li>
+            <li><a href="{{ url_for('about') }}">About</a></li>
+            
+            <li class="auth-links">
+                {% if session['user_id'] %}
+                    <span class="user-name">Hi, {{ session['user_name'] }}</span>
+                    <a href="{{ url_for('logout') }}" class="logout-btn">Logout</a>
+                {% else %}
+                    <a href="{{ url_for('signup') }}">Signup</a> 
+                    &nbsp;&nbsp;
+                    <a href="{{ url_for('login') }}">Login</a>
+                {% endif %}
+            </li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <h1>Shape Your Future with <span class="highlight">AI</span></h1>
+        <p>Intelligent decision support for your academic and career success.</p>
+        
+        {% if session['user_id'] and last_result %}
+        <div class="result-badge">
+            <p>Your Last Career Path: <strong>{{ last_result }}</strong></p>
+        </div>
+        <br><br>
+        {% endif %}
+
+        <a href="{{ url_for('assessment') }}" style="text-decoration: none;">
+            <button class="cta-btn">
+                {% if session['user_id'] %}
+                    Re-Take Assessment
+                {% else %}
+                    Get Started
+                {% endif %}
+            </button>
+        </a>
+    </header>
+
+</body>
+</html>
